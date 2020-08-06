@@ -1,7 +1,7 @@
 const fs = require("fs");
 const xml2js = require("xml2js");
 
-const db = {
+export const db = {
   save: (jsonObjectToSave) => {
     return new Promise((resolve, reject) => {
       console.log("DB Operation", jsonObjectToSave);
