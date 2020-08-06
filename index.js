@@ -10,7 +10,7 @@ const db = {
   },
 };
 
-export async function readFile(path, encoding) {
+async function readFile(path, encoding) {
   return new Promise((resolve, reject) => {
     fs.readFile(path, encoding, function (err, data) {
       if (err) {
@@ -21,14 +21,14 @@ export async function readFile(path, encoding) {
   });
 }
 
-export async function parseFile(text) {
+async function parseFile(text) {
   const result = await xml2js.parseStringPromise(text, {});
   const jsonResult = JSON.stringify(result);
 
   return jsonResult;
 }
 
-export async function saveJSON(jsonObject) {
+async function saveJSON(jsonObject) {
   await db.save(jsonObject);
 }
 
