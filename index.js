@@ -1,6 +1,5 @@
 const fs = require("fs");
 const xml2js = require("xml2js");
-const libxmljs = require("libxmljs");
 
 const db = {
   save: (jsonObjectToSave) => {
@@ -11,7 +10,7 @@ const db = {
   },
 };
 
-async function readFile(path, encoding) {
+export async function readFile(path, encoding) {
   return new Promise((resolve, reject) => {
     fs.readFile(path, encoding, function (err, data) {
       if (err) {
@@ -22,14 +21,14 @@ async function readFile(path, encoding) {
   });
 }
 
-async function parseFile(text) {
+export async function parseFile(text) {
   const result = await xml2js.parseStringPromise(text, {});
   const jsonResult = JSON.stringify(result);
 
   return jsonResult;
 }
 
-async function saveJSON(jsonObject) {
+export async function saveJSON(jsonObject) {
   await db.save(jsonObject);
 }
 
