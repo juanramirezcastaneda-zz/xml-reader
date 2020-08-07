@@ -14,7 +14,7 @@ exports.saveJSON = async (jsonObject) => {
   return await db.save(jsonObject);
 };
 
-exports.parseFile = async (text) => {
+exports.parseText = async (text) => {
   const result = await xml2js.parseStringPromise(text, {});
   const jsonResult = JSON.stringify(result);
 

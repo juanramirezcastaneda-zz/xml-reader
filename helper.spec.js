@@ -7,4 +7,8 @@ describe("XML Loader Test Suite", () => {
       expect(result["Updated"]).toEqual("True");
     });
   });
+
+  it("should call the read file with path and enconding", () => {
+    const givenPath = "./fake.xml";
+  });
 });
