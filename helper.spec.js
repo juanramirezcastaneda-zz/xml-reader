@@ -4,7 +4,7 @@ describe("XML Loader Test Suite", () => {
   it("should call the save method from DB", () => {
     const givenJSONObject = { Hello: "World" };
     saveJSON(givenJSONObject).then((result) => {
-      expect(result).toEqual(givenJSONObject);
+      expect(result["Updated"]).toEqual("True");
     });
   });
 });
