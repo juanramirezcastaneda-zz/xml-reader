@@ -15,10 +15,15 @@ exports.saveJSON = async (jsonObject) => {
 };
 
 exports.parseText = async (text) => {
-  const result = await xml2js.parseStringPromise(text, {});
-  const jsonResult = JSON.stringify(result);
-
-  return jsonResult;
+  return new Promise(async (resolve, reject) => {
+    try {
+      const result = await xml2js.parseStringPromise(text, {});
+      const jsonResult = JSON.stringify(result);
+      resolve(jsonResult);
+    } catch (error) {
+      reject(error);
+    }
+  });
 };
 
 exports.readFile = async (path, encoding) => {
