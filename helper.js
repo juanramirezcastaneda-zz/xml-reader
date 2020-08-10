@@ -28,7 +28,7 @@ exports.parseText = async (text) => {
 
 exports.readFile = async (path, encoding) => {
   return new Promise((resolve, reject) => {
-    fs.readFile(path, encoding, function (err, data) {
+    fs.readFile(path, encoding, (err, data) => {
       if (err) {
         reject(err);
       }
