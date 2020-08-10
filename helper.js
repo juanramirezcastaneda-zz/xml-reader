@@ -14,16 +14,21 @@ exports.saveJSON = async (jsonObject) => {
   return await db.save(jsonObject);
 };
 
-exports.parseFile = async (text) => {
-  const result = await xml2js.parseStringPromise(text, {});
-  const jsonResult = JSON.stringify(result);
-
-  return jsonResult;
+exports.parseText = async (text) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const result = await xml2js.parseStringPromise(text, {});
+      const jsonResult = JSON.stringify(result);
+      resolve(jsonResult);
+    } catch (error) {
+      reject(error);
+    }
+  });
 };
 
 exports.readFile = async (path, encoding) => {
   return new Promise((resolve, reject) => {
-    fs.readFile(path, encoding, function (err, data) {
+    fs.readFile(path, encoding, (err, data) => {
       if (err) {
         reject(err);
       }
